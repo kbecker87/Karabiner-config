@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<root>
+     <appdef>
+         <appname>WORD</appname>
+         <equal>com.microsoft.Word</equal>
+       </appdef>
+<!-- START HyperKey -->
+	<item>
+		<name>F19 to F19</name>
+		<appendix>(F19 to Hyper (ctrl+shift+cmd+opt) + F19 Only, send escape)</appendix>
+		<identifier>private.f192f19_escape</identifier>
+		<autogen>
+			--KeyOverlaidModifier--
+			KeyCode::F19,
+			KeyCode::COMMAND_L,
+			ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
+			KeyCode::FORWARD_DELETE
+		</autogen>
+	</item>
+<!-- END HyperKey --> 
+<!-- SATRT Delete Words --> 
+    <item>
+        <name>Alt R + Delete removes word in front.</name>
+        <identifier>private.pc_style_delete_word_forward</identifier>
+        <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
+        <autogen>
+      __KeyToKey__
+      KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+      KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R
+        </autogen>
+    </item>
+      <item>
+    <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
+    <identifier>private.pc_style_delete_word_ms2</identifier>
+    <only>WORD</only>
+    <autogen>
+      __KeyToKey__
+      KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+      KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R
+    </autogen>
+  </item>
+    <item>
+        <name>Command R  + Delete removes word</name>
+        <identifier>private.pc_style_delete_word</identifier>
+        <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
+        <autogen>
+      __KeyToKey__
+      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+      KeyCode::DELETE, ModifierFlag::OPTION_R
+        </autogen>
+    </item>
+    <item>
+    <name>Command R  + Delete removes word (MS Word and Excel)</name>
+    <identifier>private.pc_style_delete_word_ms</identifier>
+    <only>WORD</only>
+    <autogen>
+      __KeyToKey__
+      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+      KeyCode::DELETE, ModifierFlag::OPTION_R
+    </autogen>
+  </item>
+<!-- END Delete Words-->
+<!-- Akzent-Taste zu Apostroph-->
+  <item>
+      <name>Akzent zu Apostroph</name>
+      <identifier>private.apostroph</identifier>
+      <autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,</autogen>
+    </item>
+  <!-- START Remap Brightness, Keyboard Backlight and Volume keys from whole to quarter steps -->
+  <!-- credits: fixed by tekezo --> 
+  <item>
+    <name>Remap Brightness Keys from Whole to Quarter Steps</name>
+    <identifier>private.remap_brightness_whole_to_quarter_steps</identifier>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  </item>
+  <item>
+    <name>Remap Backlight Brightness Keys from Whole to Quarter Steps</name>
+    <identifier>private.remap_backlight_brightness_whole_to_quarter_steps</identifier>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::NONE, ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::NONE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  </item>
+  <item>
+    <name>Remap Volume Keys from Whole to Quarter Steps</name>
+    <identifier>private.remap_volume_whole_to_quarter_steps</identifier>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+  </item>
+  <!-- END Remap Brightness, Keyboard Backlight and Volume keys from whole to quarter steps -->
+  <!-- Start Doublepress -->
+  <item>
+      <name>DoublePressModifier</name>
+      <item>
+        <name style="important">Note:</name>
+        <appendix>DoublePressModifier always sends the first event.</appendix>
+        <appendix>For example, "change shift x2 to return" sends shift,shift,return when you press shift key twice.</appendix>
+        <appendix></appendix>
+        <appendix>If you want to cancel the first event, please use __KeyToKey__ and </appendix>
+        <appendix>Option::KEYTOKEY_DELAYED_ACTION.</appendix>
+        <appendix>For example, you should use __KeyToKey__ if you want</appendix>
+        <appendix>"change semicolon(;) twice to colon(:)" that sends either semicolon or colon.</appendix>
+      </item>
+      <item>
+        <identifier>ezzett_gleich_fragezeichen</identifier>
+        <name>ß=?</name>
+        <appendix>KEY_MINUS x3 to Equal(=)</appendix>
+        <appendix>(retain KEY_MINUS)</appendix>
+        <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::EXTRA1, KeyCode::MINUS, ModifierFlag::SHIFT_L,</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::MINUS, KeyCode::MINUS, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+      </item>
+      <item>
+        <identifier>eins_gleich_ausrufezeichen</identifier>
+        <name>1=!</name>
+        <appendix>KEY_1 x3 to !</appendix>
+        <appendix>(retain KEY_1)</appendix>
+        <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::EXTRA1, KeyCode::KEY_1, ModifierFlag::SHIFT_L,</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::KEY_1, KeyCode::KEY_1, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+      </item>
+      <item>
+        <identifier>doubleBackquote</identifier>
+        <name>MenuPop</name>
+        <appendix>Backquote x3 to alt+y</appendix>
+        <appendix>(retain BACKQUOTE)</appendix>
+        <autogen>__KeyToKey__ KeyCode::BACKQUOTE, ModifierFlag::EXTRA1, KeyCode::Z, ModifierFlag::OPTION_L,</autogen>
+        <autogen>__DoublePressModifier__ KeyCode::BACKQUOTE, KeyCode::BACKQUOTE, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+      </item>
+      <item>
+        <identifier>doublepressshift</identifier>
+        <name>Shift to Help (mapped to Application Switcher in Keyboard Maestro)</name>
+        <appendix>Shift L x2 to Pagedown</appendix>
+        <autogen>
+        __DoublePressModifier__ 
+        KeyCode::SHIFT_L, KeyCode::SHIFT_L, 
+        KeyCode::HELP
+        </autogen>
+      </item>
+    </item>
+</root>
