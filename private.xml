@@ -1,54 +1,99 @@
 <?xml versio="1.0"?>
 <root>
-     <devicevendordef>
-    <vendorname>HOLDCHIP</vendorname>
-    <vendorid>0x04d9</vendorid>
-  </devicevendordef>
-  <deviceproductdef>
-    <productname>Ajazz</productname>
-    <productid>0x0024</productid>
-  </deviceproductdef>
-      <item>
+<!-- Ajazz Tastatur -->
+    <devicevendordef>
+        <vendorname>HOLDCHIP</vendorname>
+        <vendorid>0x04d9</vendorid>
+    </devicevendordef>
+    <deviceproductdef>
+        <productname>Ajazz</productname>
+        <productid>0x0024</productid>
+    </deviceproductdef>
+ <item>
+    <name>Ajazz Keyboard</name>
+    <item>
         <identifier>Ajazz1</identifier>
         <name>CMD L to ALT</name>
         <appendix>Ajazz</appendix>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L,</autogen>
-      </item>
-     <item>
+    </item>
+    <item>
         <identifier>Ajazz2</identifier>
         <name>ALT L to CMD</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L,</autogen>
-      </item>
-     <item>
+    </item>
+    <item>
         <identifier>Ajazz3</identifier>
         <name>ALT R to CMD</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R,</autogen>
-      </item>
+    </item>
         <item>
         <identifier>Ajazz4</identifier>
         <name>END to FN</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::END, KeyCode::FN,</autogen>
-      </item>
+    </item>
         <item>
         <identifier>Ajazz5</identifier>
         <name>HOME TO CARET</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::HOME, KeyCode::DANISH_DOLLAR</autogen>
-      </item>
-     <appdef>
+    </item>
+    <item>
+        <identifier>Ajazz6</identifier>
+        <name>CTRL R TO ALT</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::OPTION_R</autogen>
+    </item>
+    <item>
+        <identifier>Ajazz7</identifier>
+        <name>PgUp moves word</name>
+        <uielementrole_only>AXTextArea, AXTextField</uielementrole_only>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ 
+                KeyCode::PAGEUP, 
+                KeyCode::CURSOR_LEFT, ModifierFlag::OPTION_R</autogen>
+    </item>
+    <item>
+        <identifier>Ajazz8</identifier>
+        <name>PgDn moves word</name>
+        <uielementrole_only>AXTextArea, AXTextField</uielementrole_only>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ 
+                KeyCode::PAGEDOWN, 
+                KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R</autogen>
+    </item>
+ </item>
+ <item>
+    <name>Shifts to Chevrons</name>
+    <appendix>Shifts, when pressed alone, type Chevrons.  When used with other keys they're normal shifts.</appendix>
+
+    <identifier>private.shifts_to_parens</identifier>
+
+    <!-- This is the basic mapping. -->
+    <!--<autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>-->
+    <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
+
+    
+</item>
+    <appdef>
          <appname>WORD</appname>
          <equal>com.microsoft.Word</equal>
-       </appdef>
+    </appdef>
+
 <!-- START HyperKey -->
-	<item>
+
+    <item>
 		<name>F19 to F19</name>
 		<appendix>(F19 to Hyper (ctrl+shift+cmd+opt) + F19 Only, send escape)</appendix>
 		<identifier>private.f192f19_escape</identifier>
@@ -62,6 +107,7 @@
 	</item>
 <!-- END HyperKey --> 
 <!-- SATRT Delete Words --> 
+
     <item>
         <name>Alt R + Delete removes word in front.</name>
         <identifier>private.pc_style_delete_word_forward</identifier>
@@ -72,16 +118,16 @@
       KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R
         </autogen>
     </item>
-      <item>
-    <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
-    <identifier>private.pc_style_delete_word_ms2</identifier>
-    <only>WORD</only>
-    <autogen>
-      __KeyToKey__
-      KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-      KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R
-    </autogen>
-  </item>
+    <item>
+        <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
+        <identifier>private.pc_style_delete_word_ms2</identifier>
+        <only>WORD</only>
+        <autogen>
+        __KeyToKey__
+        KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R
+        </autogen>
+    </item>
     <item>
         <name>Command R  + Delete removes word</name>
         <identifier>private.pc_style_delete_word</identifier>
@@ -93,30 +139,30 @@
         </autogen>
     </item>
     <item>
-    <name>Command R  + Delete removes word (MS Word and Excel)</name>
-    <identifier>private.pc_style_delete_word_ms</identifier>
-    <only>WORD</only>
-    <autogen>
+        <name>Command R  + Delete removes word (MS Word and Excel)</name>
+        <identifier>private.pc_style_delete_word_ms</identifier>
+        <only>WORD</only>
+        <autogen>
       __KeyToKey__
       KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
       KeyCode::DELETE, ModifierFlag::OPTION_R
-    </autogen>
-  </item>
+        </autogen>
+    </item>
 <!-- END Delete Words-->
 <!-- Akzent-Taste zu Apostroph-->
-  <item>
+    <item>
       <name>Akzent zu Apostroph</name>
       <identifier>private.apostroph</identifier>
       <autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,</autogen>
     </item>
   <!-- START Remap Brightness, Keyboard Backlight and Volume keys from whole to quarter steps -->
   <!-- credits: fixed by tekezo --> 
-  <item>
-    <name>Remap Brightness Keys from Whole to Quarter Steps</name>
-    <identifier>private.remap_brightness_whole_to_quarter_steps</identifier>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  </item>
+    <item>
+        <name>Remap Brightness Keys from Whole to Quarter Steps</name>
+        <identifier>private.remap_brightness_whole_to_quarter_steps</identifier>
+        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
+    </item>
   <item>
     <name>Remap Backlight Brightness Keys from Whole to Quarter Steps</name>
     <identifier>private.remap_backlight_brightness_whole_to_quarter_steps</identifier>
