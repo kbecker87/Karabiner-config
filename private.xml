@@ -1,5 +1,48 @@
-<?xml version="1.0"?>
+<?xml versio="1.0"?>
 <root>
+     <devicevendordef>
+    <vendorname>HOLDCHIP</vendorname>
+    <vendorid>0x04d9</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>Ajazz</productname>
+    <productid>0x0024</productid>
+  </deviceproductdef>
+      <item>
+        <identifier>Ajazz1</identifier>
+        <name>CMD L to ALT</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L,</autogen>
+      </item>
+     <item>
+        <identifier>Ajazz2</identifier>
+        <name>ALT L to CMD</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L,</autogen>
+      </item>
+     <item>
+        <identifier>Ajazz3</identifier>
+        <name>ALT R to CMD</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R,</autogen>
+      </item>
+        <item>
+        <identifier>Ajazz4</identifier>
+        <name>END to FN</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::END, KeyCode::FN,</autogen>
+      </item>
+        <item>
+        <identifier>Ajazz5</identifier>
+        <name>HOME TO CARET</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::HOME, KeyCode::DANISH_DOLLAR</autogen>
+      </item>
      <appdef>
          <appname>WORD</appname>
          <equal>com.microsoft.Word</equal>
