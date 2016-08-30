@@ -9,4 +9,4 @@ enthält
 - Alt R + Backspace löscht Wort vorwärts
 - Cmd R + Backspace löscht Wort Rückwärts
 - Akzent wird zum echten (`’`) Apostroph
-- Akzent + Shift L wird zum Akut Akzent: `
+- Akzent + Shift L wird zum Grave Akzent: `
