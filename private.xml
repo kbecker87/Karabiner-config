@@ -82,7 +82,8 @@
 
     <!-- This is the basic mapping. -->
     <!--<autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, ModifierFlag::SHIFT_R | ModifierFlag::NONE, KeyCode::SHIFT_R, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_L</autogen>-->
-    <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
+    <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
+    <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
 
     
 </item>
