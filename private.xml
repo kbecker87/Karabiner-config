@@ -32,19 +32,26 @@
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R,</autogen>
     </item>
-        <item>
+    <item>
         <identifier>Ajazz4</identifier>
         <name>END to FN</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
         <autogen>__KeyToKey__ KeyCode::END, KeyCode::FN,</autogen>
     </item>
-        <item>
+    <item>
         <identifier>Ajazz5</identifier>
-        <name>HOME TO CARET</name>
+        <name>HOME TO Delete</name>
         <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
         <appendix>Ajazz</appendix>
-        <autogen>__KeyToKey__ KeyCode::HOME, KeyCode::DANISH_DOLLAR</autogen>
+        <autogen>__KeyToKey__ KeyCode::HOME, KeyCode::DELETE</autogen>
+    </item>
+    <item>
+        <identifier>Ajazz9</identifier>
+        <name>Backquote TO CARET</name>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <appendix>Ajazz</appendix>
+        <autogen>__KeyToKey__ KeyCode::BACKQUOTE, KeyCode::DANISH_DOLLAR</autogen>
     </item>
     <item>
         <identifier>Ajazz6</identifier>
@@ -72,6 +79,41 @@
         <autogen>__KeyToKey__ 
                 KeyCode::PAGEDOWN, 
                 KeyCode::CURSOR_RIGHT, ModifierFlag::OPTION_R</autogen>
+    </item>
+    <item>
+        <identifier>Ajazz10</identifier>
+        <name>F8</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::F8, ConsumerKeyCode::MUSIC_PLAY,</autogen>
+    </item>
+        <item>
+        <identifier>Ajazz11</identifier>
+        <name>F9</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::F9, ConsumerKeyCode::MUSIC_NEXT,</autogen>
+    </item>
+        <item>
+        <identifier>Ajazz12</identifier>
+        <name>F10</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::F10, ConsumerKeyCode::VOLUME_MUTE,</autogen>
+    </item>
+        <item>
+        <identifier>Ajazz13</identifier>
+        <name>F11</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::F11, ConsumerKeyCode::VOLUME_DOWN,</autogen>
+    </item>
+        <item>
+        <identifier>Ajazz14</identifier>
+        <name>F12</name>
+        <appendix>Ajazz</appendix>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>__KeyToKey__ KeyCode::F12, ConsumerKeyCode::VOLUME_UP,</autogen>
     </item>
  </item>
  <item>
@@ -103,7 +145,7 @@
 			KeyCode::F19,
 			KeyCode::COMMAND_L,
 			ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,
-			KeyCode::FORWARD_DELETE
+			
 		</autogen>
 	</item>
 <!-- END HyperKey --> 
@@ -152,31 +194,17 @@
 <!-- END Delete Words-->
 <!-- Akzent-Taste zu Apostroph-->
     <item>
-      <name>Akzent zu Apostroph</name>
-      <identifier>private.apostroph</identifier>
-      <autogen>__KeyToKey__ KeyCode::EQUAL, KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,</autogen>
+        <name>Akzent zu Apostroph</name>
+        <identifier>private.apostroph</identifier>
+        <autogen>__KeyToKey__ 
+        KeyCode::EQUAL, ModifierFlag::SHIFT_L,
+        KeyCode::EQUAL, ModifierFlag::SHIFT_L,
+        </autogen>
+        <autogen>__KeyToKey__ 
+        KeyCode::EQUAL,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,
+        </autogen>
     </item>
-  <!-- START Remap Brightness, Keyboard Backlight and Volume keys from whole to quarter steps -->
-  <!-- credits: fixed by tekezo --> 
-    <item>
-        <name>Remap Brightness Keys from Whole to Quarter Steps</name>
-        <identifier>private.remap_brightness_whole_to_quarter_steps</identifier>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-        <autogen>__ConsumerToConsumer__ ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::NONE, ConsumerKeyCode::BRIGHTNESS_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-    </item>
-  <item>
-    <name>Remap Backlight Brightness Keys from Whole to Quarter Steps</name>
-    <identifier>private.remap_backlight_brightness_whole_to_quarter_steps</identifier>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::NONE, ConsumerKeyCode::KEYBOARDLIGHT_LOW, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::NONE, ConsumerKeyCode::KEYBOARDLIGHT_HIGH, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  </item>
-  <item>
-    <name>Remap Volume Keys from Whole to Quarter Steps</name>
-    <identifier>private.remap_volume_whole_to_quarter_steps</identifier>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_DOWN, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-    <autogen>__ConsumerToConsumer__ ConsumerKeyCode::VOLUME_UP, ModifierFlag::NONE, ConsumerKeyCode::VOLUME_UP, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
-  </item>
-  <!-- END Remap Brightness, Keyboard Backlight and Volume keys from whole to quarter steps -->
   <!-- Start Doublepress -->
   <item>
       <name>DoublePressModifier</name>
