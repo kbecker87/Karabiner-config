@@ -9,235 +9,6 @@
         <productname>Ajazz</productname>
         <productid>0x0024</productid>
     </deviceproductdef>
-    <!-- Appdef -->
-    <appdef>
-        <appname>WORD</appname>
-        <equal>com.microsoft.Word</equal>
-    </appdef>
-    <!-- START HyperKey -->
-    <item>
-        <name>F19 to F19</name>
-        <appendix>(F19 to Hyper (ctrl+shift+cmd+opt)</appendix>
-        <identifier>private.hyper</identifier>
-        <autogen>--KeyOverlaidModifier--
-            KeyCode::F19,
-            KeyCode::COMMAND_L,
-            ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,</autogen>
-    </item>
-    <!-- END HyperKey -->
-    <!-- Mappings -->
-    <item>
-        <name>Shifts L to Chevrons</name>
-        <appendix>Shifts, when pressed alone, type Chevrons.  When used with other keys they're normal shifts.</appendix>
-        <identifier>private.shifts_to_parens</identifier>
-        <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, 
-            KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
-        <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, 
-            KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
-    </item>
-    <!-- SATRT Delete Words -->
-    <item>
-        <name>Delete Words</name>
-        <item>
-            <name>Alt R + Delete removes word in front.</name>
-            <identifier>private.pc_style_delete_word_forward</identifier>
-            <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
-            <autogen>__KeyToKey__
-      KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-      KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R</autogen>
-        </item>
-    <item>
-        <name>Shift R short to froward delete</name>
-        <identifier>shiftr_fdelete</identifier>
-        <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_R,
-            KeyCode::SHIFT_R,
-            KeyCode::FORWARD_DELETE</autogen>
-    </item>
-        <item>
-            <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
-            <identifier>private.pc_style_delete_word_ms2</identifier>
-            <only>WORD</only>
-            <autogen>__KeyToKey__
-        KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R</autogen>
-        </item>
-        <item>
-            <name>Command R  + Delete removes word</name>
-            <identifier>private.pc_style_delete_word</identifier>
-            <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
-            <autogen>__KeyToKey__
-      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
-      KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
-        </item>
-        <item>
-            <name>Command R  + Delete removes word (MS Word and Excel)</name>
-            <identifier>private.pc_style_delete_word_ms</identifier>
-            <only>WORD</only>
-            <autogen>__KeyToKey__
-      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
-      KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
-        </item>
-    </item>
-    <!-- END Delete Words-->
-    <!-- Akzent-Taste zu Apostroph, Shift + Akzent = Backtick (Graveakzent)-->
-    <item>
-        <name>Akzent zu Apostroph</name>
-        <identifier>private.apostroph</identifier>
-        <autogen>__KeyToKey__ 
-        KeyCode::EQUAL, ModifierFlag::SHIFT_L,
-        KeyCode::EQUAL, ModifierFlag::SHIFT_L,</autogen>
-        <autogen>__KeyToKey__ 
-        KeyCode::EQUAL,
-        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,</autogen>
-    </item>
-    <!-- Start Doublepress Modifier -->
-    <item>
-        <name>DoublePressModifier</name>
-        <item>
-            <name style="important">Note:</name>
-            <appendix>DoublePressModifier always sends the first event.</appendix>
-            <appendix>For example, "change shift x2 to return" sends shift,shift,return when you press shift key twice.</appendix>
-            <appendix></appendix>
-            <appendix>If you want to cancel the first event, please use __KeyToKey__ and</appendix>
-            <appendix>Option::KEYTOKEY_DELAYED_ACTION.</appendix>
-            <appendix>For example, you should use __KeyToKey__ if you want</appendix>
-            <appendix>"change semicolon(;) twice to colon(:)" that sends either semicolon or colon.</appendix>
-        </item>
-        <item>
-            <identifier>ezzett_gleich_fragezeichen</identifier>
-            <name>ß=?</name>
-            <appendix>KEY_MINUS x3 to Equal(=)</appendix>
-            <appendix>(retain KEY_MINUS)</appendix>
-            <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::EXTRA1, KeyCode::MINUS, ModifierFlag::SHIFT_L,</autogen>
-            <autogen>__DoublePressModifier__ KeyCode::MINUS, KeyCode::MINUS, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
-        </item>
-        <item>
-            <identifier>eins_gleich_ausrufezeichen</identifier>
-            <name>1=!</name>
-            <appendix>KEY_1 x3 to !</appendix>
-            <appendix>(retain KEY_1)</appendix>
-            <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::EXTRA1, KeyCode::KEY_1, ModifierFlag::SHIFT_L,</autogen>
-            <autogen>__DoublePressModifier__ KeyCode::KEY_1, KeyCode::KEY_1, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
-        </item>
-        <item>
-            <identifier>doublepressshift</identifier>
-            <name>Shift to Help (mapped to Application Switcher in Keyboard Maestro)</name>
-            <appendix>Shift L x2 to Pagedown</appendix>
-            <autogen>__DoublePressModifier__ 
-        KeyCode::SHIFT_L, KeyCode::SHIFT_L, 
-        KeyCode::HELP</autogen>
-        </item>
-    </item>
-    <!-- CMD L alleine = CTRL + Space -> Alfred -->
-    <item>
-        <name>CMD R alleine = Alfred</name>
-        <identifier>private.right_command_to_alfred</identifier>
-        <autogen>__KeyOverlaidModifier__
-        KeyCode::COMMAND_L,
-        KeyCode::COMMAND_L,
-        KeyCode::SPACE, ModifierFlag::CONTROL_L,</autogen>
-    </item>
-    <!-- Launcher Moder -->
-    <modifierdef>MY_LAUNCHER_MODE</modifierdef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_SAFARI</name>
-        <url type="file">/Applications/Safari.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_FINDER</name>
-        <url type="file">/Applications/Path Finder.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_SUBLIME</name>
-        <url type="file">/Applications/Sublime Text.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_MAIL</name>
-        <url type="file">/Applications/Canary.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_TELEGRAM</name>
-        <url type="file">/Applications/Telegram.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_ULYSSES</name>
-        <url type="file">/Applications/Ulysses.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_EVERNOTE</name>
-        <url type="file">/Applications/Evernote.app</url>
-    </vkopenurldef>
-    <vkopenurldef>
-        <name>KeyCode::VK_OPEN_URL_APP_ACTIVITY</name>
-        <url type="file">/Applications/Utilities/Activity Monitor.app</url>
-    </vkopenurldef>
-    <item>
-        <name>Launcher Mode (Tab + Buchstaben)</name>
-        <identifier>private.launcher_mode</identifier>
-        <!-- condition: turn on launcher mode only when the trigger key is pressed without other keys. -->
-        <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>
-        <modifier_not>ModifierFlag::COMMAND_L,
-      ModifierFlag::COMMAND_R,
-      ModifierFlag::CONTROL_L,
-      ModifierFlag::CONTROL_R,
-      ModifierFlag::FN,
-      ModifierFlag::OPTION_L,
-      ModifierFlag::OPTION_R,
-      ModifierFlag::SHIFT_L,
-      ModifierFlag::SHIFT_R,</modifier_not>
-        <autogen>__KeyOverlaidModifier__
-      KeyCode::TAB,
-            <!--
-                                                                          Use notsave.launcher_mode_v2 in order to be higher priority.
-                                                                          Use ModifierFlag::MY_LAUNCHER_MODE for __DropAllKeys__.
-                                                                      -->@begin
-      KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_private_launcher_mode, ModifierFlag::MY_LAUNCHER_MODE,
-      @end
-
-      @begin
-      KeyCode::TAB,
-      @end
-        </autogen>
-    </item>
-    <item hidden="true">
-        <identifier vk_config="true">notsave.private_launcher_mode</identifier>
-        <autogen>__BlockUntilKeyUp__ KeyCode::TAB,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::S,
-      KeyCode::VK_OPEN_URL_APP_SAFARI,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::D,
-      KeyCode::VK_OPEN_URL_APP_FINDER,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::E,
-      KeyCode::VK_OPEN_URL_APP_EVERNOTE,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::T,
-      KeyCode::VK_OPEN_URL_APP_SUBLIME,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::M,
-      KeyCode::VK_OPEN_URL_APP_MAIL,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::C,
-      KeyCode::VK_OPEN_URL_APP_TELEGRAM,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::U,
-      KeyCode::VK_OPEN_URL_APP_ULYSSES,</autogen>
-        <autogen>__KeyDownUpToKey__
-      KeyCode::A,
-      KeyCode::VK_OPEN_URL_APP_ACTIVITY,</autogen>
-    </item>
-    <item>
-        <name>q = cmd</name>
-        <identifier>private.e.cmd</identifier>
-        <autogen>__KeyOverlaidModifier__
-        KeyCode::Q,
-        KeyCode::COMMAND_L,
-        KeyCode::Q</autogen>
-    </item>
     <item>
         <name>Ajazz Keyboard</name>
         <item>
@@ -343,6 +114,289 @@
             <appendix>Ajazz</appendix>
             <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
             <autogen>__KeyToKey__ KeyCode::F12, ConsumerKeyCode::VOLUME_UP,</autogen>
+        </item>
+    </item>
+    <!-- Appdef -->
+    <appdef>
+        <appname>WORD</appname>
+        <equal>com.microsoft.Word</equal>
+    </appdef>
+    <!-- START HyperKey -->
+    <item>
+        <name>F19 to F19</name>
+        <appendix>(F19 to Hyper (ctrl+shift+cmd+opt)</appendix>
+        <identifier>private.hyper</identifier>
+        <autogen>--KeyOverlaidModifier--
+            KeyCode::F19,
+            KeyCode::COMMAND_L,
+            ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L,</autogen>
+    </item>
+    <!-- END HyperKey -->
+    <!-- Mappings -->
+    <item>
+        <name>Shifts L to Chevrons</name>
+        <appendix>Shifts, when pressed alone, type Chevrons.  When used with other keys they're normal shifts.</appendix>
+        <identifier>private.shifts_to_parens</identifier>
+        <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, 
+            KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
+        <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, 
+            KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
+    </item>
+    <!-- Akzent-Taste zu Apostroph, Shift + Akzent = Backtick (Graveakzent)-->
+    <item>
+        <name>Akzent zu Apostroph</name>
+        <identifier>private.apostroph</identifier>
+        <autogen>__KeyToKey__ 
+        KeyCode::EQUAL, ModifierFlag::SHIFT_L,
+        KeyCode::EQUAL, ModifierFlag::SHIFT_L,</autogen>
+        <autogen>__KeyToKey__ 
+        KeyCode::EQUAL,
+        KeyCode::BACKSLASH, ModifierFlag::SHIFT_L | ModifierFlag::OPTION_L,</autogen>
+    </item>
+    <!-- CMD L alleine = CTRL + Space -> Alfred -->
+    <item>
+        <name>CMD alleine = Alfred</name>
+        <appendix>Alfred ist gemapped auf ctrl + alt + cmd + -</appendix>
+        <identifier>private.right_command_to_alfred</identifier>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::COMMAND_L,
+        KeyCode::COMMAND_L,
+        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::COMMAND_R,
+        KeyCode::COMMAND_R,
+        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
+        KeyCode::SPACE</autogen>
+        <!-- Alt R öffnet Alfred im Homefolder
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::OPTION_R,
+        KeyCode::OPTION_R,
+        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
+        KeyCode::7, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+        -->
+    </item>
+    <appdef>
+        <appname>SAFARI</appname>
+        <equal>com.apple.Safari</equal>
+    </appdef>
+    <item>
+        <name>Safari Adress</name>
+        <identifier>private.safari.adress</identifier>
+        <only>SAFARI</only>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::OPTION_L,
+        KeyCode::OPTION_L,
+        KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::OPTION_R,
+        KeyCode::OPTION_R,
+        KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
+        <name>q = cmd</name>
+        <appendix>Q alleine = Q; Q + Taste = CMD + Taste</appendix>
+        <identifier>private.e.cmd</identifier>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::Q,
+        KeyCode::COMMAND_L,
+        KeyCode::Q</autogen>
+    </item>
+    <!-- Launcher Moder -->
+    <modifierdef>MY_LAUNCHER_MODE</modifierdef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_SAFARI</name>
+        <url type="file">/Applications/Safari.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_FINDER</name>
+        <url type="file">/Applications/Path Finder.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_SUBLIME</name>
+        <url type="file">/Applications/Sublime Text.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_MAIL</name>
+        <url type="file">/Applications/Canary.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_TELEGRAM</name>
+        <url type="file">/Applications/Telegram.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_ULYSSES</name>
+        <url type="file">/Applications/Ulysses.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_EVERNOTE</name>
+        <url type="file">/Applications/Evernote.app</url>
+    </vkopenurldef>
+    <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_ACTIVITY</name>
+        <url type="file">/Applications/Utilities/Activity Monitor.app</url>
+    </vkopenurldef>
+    <item>
+        <name>Launcher Mode (Tab + Buchstaben)</name>
+        <appendix>TAB + Buchstaben launched Apps</appendix>
+        <identifier>private.launcher_mode</identifier>
+        <!-- condition: turn on launcher mode only when the trigger key is pressed without other keys. -->
+        <pressingphysicalkeys_lessthan>2</pressingphysicalkeys_lessthan>
+        <modifier_not>ModifierFlag::COMMAND_L,
+      ModifierFlag::COMMAND_R,
+      ModifierFlag::CONTROL_L,
+      ModifierFlag::CONTROL_R,
+      ModifierFlag::FN,
+      ModifierFlag::OPTION_L,
+      ModifierFlag::OPTION_R,
+      ModifierFlag::SHIFT_L,
+      ModifierFlag::SHIFT_R,</modifier_not>
+        <autogen>__KeyOverlaidModifier__
+      KeyCode::TAB,
+            <!--
+                                                                                                              Use notsave.launcher_mode_v2 in order to be higher priority.
+                                                                                                              Use ModifierFlag::MY_LAUNCHER_MODE for __DropAllKeys__.
+                                                                                                          -->@begin
+      KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_private_launcher_mode, ModifierFlag::MY_LAUNCHER_MODE,
+      @end
+
+      @begin
+      KeyCode::TAB,
+      @end
+        </autogen>
+    </item>
+<!-- Apps Folder definieren -->
+    <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_FILE_APPS</name>
+    <url type="file">/Applications</url>
+  </vkopenurldef>
+
+    <item hidden="true">
+        <identifier vk_config="true">notsave.private_launcher_mode</identifier>
+        <autogen>__BlockUntilKeyUp__ KeyCode::TAB,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::S,
+      KeyCode::VK_OPEN_URL_APP_SAFARI,</autogen>
+        
+        <autogen>__KeyToKey__
+        KeyCode::D,
+        KeyCode::VK_NONE,
+        
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::VK_OPEN_URL_APP_FINDER,
+        
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::D,
+        KeyCode::VK_OPEN_URL_FILE_Desktop,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+
+         Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::A,
+        KeyCode::VK_OPEN_URL_FILE_APPS,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+        
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::F,
+        KeyCode::VK_OPEN_URL_FILE_Home,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::E,
+      KeyCode::VK_OPEN_URL_APP_EVERNOTE,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::T,
+      KeyCode::VK_OPEN_URL_APP_SUBLIME,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::M,
+      KeyCode::VK_OPEN_URL_APP_MAIL,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::C,
+      KeyCode::VK_OPEN_URL_APP_TELEGRAM,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::U,
+      KeyCode::VK_OPEN_URL_APP_ULYSSES,</autogen>
+        <autogen>__KeyDownUpToKey__
+      KeyCode::A,
+      KeyCode::VK_OPEN_URL_APP_ACTIVITY,</autogen>
+    </item>
+    <!-- START Delete Words -->
+    <item>
+        <name>Delete Words</name>
+        <item>
+            <name>Alt R + Delete removes word in front.</name>
+            <identifier>private.pc_style_delete_word_forward</identifier>
+            <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
+            <autogen>__KeyToKey__
+      KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+      KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R</autogen>
+        </item>
+        <item>
+            <name>Shift R short to froward delete</name>
+            <identifier>shiftr_fdelete</identifier>
+            <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_R,
+            KeyCode::SHIFT_R,
+            KeyCode::FORWARD_DELETE</autogen>
+        </item>
+        <item>
+            <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
+            <identifier>private.pc_style_delete_word_ms2</identifier>
+            <only>WORD</only>
+            <autogen>__KeyToKey__
+        KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
+        KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R</autogen>
+        </item>
+        <item>
+            <name>Command R  + Delete removes word</name>
+            <identifier>private.pc_style_delete_word</identifier>
+            <uielementrole_only>AXTextArea, AXTextField, AXWebArea, AXScrollArea</uielementrole_only>
+            <autogen>__KeyToKey__
+      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+      KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
+        </item>
+        <item>
+            <name>Command R  + Delete removes word (MS Word and Excel)</name>
+            <identifier>private.pc_style_delete_word_ms</identifier>
+            <only>WORD</only>
+            <autogen>__KeyToKey__
+      KeyCode::DELETE, ModifierFlag::COMMAND_R | ModifierFlag::NONE,
+      KeyCode::DELETE, ModifierFlag::OPTION_R</autogen>
+        </item>
+    </item>
+    <!-- END Delete Words-->
+    <!-- Start Doublepress Modifier -->
+    <item>
+        <name>DoublePressModifier</name>
+        <item>
+            <name style="important">Note:</name>
+            <appendix>DoublePressModifier always sends the first event.</appendix>
+            <appendix>For example, "change shift x2 to return" sends shift,shift,return when you press shift key twice.</appendix>
+            <appendix></appendix>
+            <appendix>If you want to cancel the first event, please use __KeyToKey__ and</appendix>
+            <appendix>Option::KEYTOKEY_DELAYED_ACTION.</appendix>
+            <appendix>For example, you should use __KeyToKey__ if you want</appendix>
+            <appendix>"change semicolon(;) twice to colon(:)" that sends either semicolon or colon.</appendix>
+        </item>
+        <item>
+            <identifier>ezzett_gleich_fragezeichen</identifier>
+            <name>ß=?</name>
+            <appendix>KEY_MINUS x3 to Equal(=)</appendix>
+            <appendix>(retain KEY_MINUS)</appendix>
+            <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::EXTRA1, KeyCode::MINUS, ModifierFlag::SHIFT_L,</autogen>
+            <autogen>__DoublePressModifier__ KeyCode::MINUS, KeyCode::MINUS, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+        </item>
+        <item>
+            <identifier>eins_gleich_ausrufezeichen</identifier>
+            <name>1=!</name>
+            <appendix>KEY_1 x3 to !</appendix>
+            <appendix>(retain KEY_1)</appendix>
+            <autogen>__KeyToKey__ KeyCode::KEY_1, ModifierFlag::EXTRA1, KeyCode::KEY_1, ModifierFlag::SHIFT_L,</autogen>
+            <autogen>__DoublePressModifier__ KeyCode::KEY_1, KeyCode::KEY_1, KeyCode::DELETE, KeyCode::DELETE, KeyCode::VK_STICKY_EXTRA1</autogen>
+        </item>
+        <item>
+            <identifier>doublepressshift</identifier>
+            <name>Shift to Help (mapped to Application Switcher in Keyboard Maestro)</name>
+            <appendix>Shift L x2 to Pagedown</appendix>
+            <autogen>__DoublePressModifier__ 
+        KeyCode::SHIFT_L, KeyCode::SHIFT_L, 
+        KeyCode::HELP</autogen>
         </item>
     </item>
 </root>
