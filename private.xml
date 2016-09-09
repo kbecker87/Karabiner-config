@@ -121,6 +121,30 @@
         <appname>WORD</appname>
         <equal>com.microsoft.Word</equal>
     </appdef>
+    <!-- Shifts -->
+    <item>
+        <name>Shifts</name>
+    <item>
+        <name>Shifts L to Chevrons</name>
+        <appendix>Shift, when pressed alone, type Chevrons . When used with other keys they're normal shifts.</appendix>
+        <identifier>private.shifts_to_parens</identifier>
+        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+        <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, 
+            KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
+        <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, 
+            KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
+    </item>
+    <item>
+            <name>Shift R short to froward delete</name>
+            <identifier>shiftr_fdelete</identifier>
+            <autogen>--KeyOverlaidModifier-- 
+            KeyCode::SHIFT_R,
+            KeyCode::SHIFT_R,
+            KeyCode::FORWARD_DELETE</autogen>
+        </item>
+    </item>
     <!-- START HyperKey -->
     <item>
         <name>F19 to F19</name>
@@ -133,17 +157,6 @@
     </item>
     <!-- END HyperKey -->
     <!-- Mappings -->
-    <item>
-        <name>Shifts L to Chevrons</name>
-        <appendix>Shifts, when pressed alone, type Chevrons.  When used with other keys they're normal shifts.</appendix>
-        <identifier>private.shifts_to_parens</identifier>
-        <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, 
-            KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
-        <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, 
-            KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
-    </item>
     <!-- Akzent-Taste zu Apostroph, Shift + Akzent = Backtick (Graveakzent)-->
     <item>
         <name>Akzent zu Apostroph</name>
@@ -326,14 +339,6 @@
             <autogen>__KeyToKey__
       KeyCode::DELETE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
       KeyCode::FORWARD_DELETE, ModifierFlag::OPTION_R</autogen>
-        </item>
-        <item>
-            <name>Shift R short to froward delete</name>
-            <identifier>shiftr_fdelete</identifier>
-            <autogen>--KeyOverlaidModifier-- 
-            KeyCode::SHIFT_R,
-            KeyCode::SHIFT_R,
-            KeyCode::FORWARD_DELETE</autogen>
         </item>
         <item>
             <name>Alt R + Delete removes word in front (MS Word and Excel)</name>
