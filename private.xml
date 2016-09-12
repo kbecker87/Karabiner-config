@@ -19,11 +19,13 @@
             <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L,</autogen>
         </item>
         <item>
-            <identifier>Ajazz2</identifier>
-            <name>ALT L to CMD</name>
-            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
-            <appendix>Ajazz</appendix>
-            <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L,</autogen>
+        <name>Ajazz CMD L</name>
+        <appendix>Alfred ist gemapped auf ctrl + alt + cmd + -</appendix>
+        <identifier>ajazz.right_command_to_alfred</identifier>
+        <autogen>__KeyOverlaidModifier__
+        KeyCode::OPTION_L,
+        KeyCode::COMMAND_L,
+        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
         </item>
         <item>
             <identifier>Ajazz3</identifier>
@@ -404,4 +406,39 @@
         KeyCode::HELP</autogen>
         </item>
     </item>
+    <item>
+  <name>Disable Sysdiagnose DOT Key</name>
+  <appendix>Disable Sysdiagnose DOT Key</appendix>
+  <identifier>private.disable_sysdiagnose_dot_key</identifier>
+  <autogen>
+    --KeyToKey--
+    KeyCode::DOT,
+    ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
+    KeyCode::VK_NONE
+  </autogen>
+</item>
+
+<item>
+  <name>Disable Sysdiagnose COMMA Key</name>
+  <appendix>Disable Sysdiagnose COMMA Key</appendix>
+  <identifier>private.disable_sysdiagnose_comma_key</identifier>
+  <autogen>
+    --KeyToKey--
+    KeyCode::COMMA,
+    ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
+    KeyCode::VK_NONE
+  </autogen>
+</item>
+
+<item>
+  <name>Disable Sysdiagnose Foward Slash Key</name>
+  <appendix>Disable Sysdiagnose FORWARD SLASH Key</appendix>
+  <identifier>private.disable_sysdiagnose_forward_slash</identifier>
+  <autogen>
+    --KeyToKey--
+    KeyCode::SLASH,
+    ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
+    KeyCode::VK_NONE
+  </autogen>
+</item>
 </root>
