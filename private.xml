@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <root>
+    <appdef>
+        <appname>SAFARI</appname>
+        <equal>com.apple.Safari</equal>
+    </appdef>
     <!-- Ajazz Tastatur -->
     <devicevendordef>
         <vendorname>HOLDCHIP</vendorname>
@@ -19,10 +23,10 @@
             <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L,</autogen>
         </item>
         <item>
-        <name>Ajazz CMD L</name>
-        <appendix>Alfred ist gemapped auf ctrl + alt + cmd + -</appendix>
-        <identifier>ajazz.right_command_to_alfred</identifier>
-        <autogen>__KeyOverlaidModifier__
+            <name>Ajazz CMD L</name>
+            <identifier>ajazz.right_command_to_alfred</identifier>
+            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+            <autogen>__KeyOverlaidModifier__
         KeyCode::OPTION_L,
         KeyCode::COMMAND_L,
         KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
@@ -33,6 +37,23 @@
             <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
             <appendix>Ajazz</appendix>
             <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R,</autogen>
+        </item>
+        <item>
+            <name>Ajazz CTRL R to Safari Adress</name>
+            <identifier>ajazz.safari.adress</identifier>
+            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+            <only>SAFARI</only>
+            <autogen>__KeyOverlaidModifier__
+        KeyCode::CONTROL_R,
+        KeyCode::OPTION_R,
+        KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+        </item>
+        <item>
+            <identifier>Ajazz143</identifier>
+            <name>Ajazz CTRL R to ALT</name>
+            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+            <appendix>Ajazz</appendix>
+            <autogen>__KeyToKey__ KeyCode::CONTROL_R, KeyCode::OPTION_R,</autogen>
         </item>
         <item>
             <identifier>Ajazz4</identifier>
@@ -126,19 +147,19 @@
     <!-- Shifts -->
     <item>
         <name>Shifts</name>
-    <item>
-        <name>Shifts L to Chevrons</name>
-        <appendix>Shift, when pressed alone, type Chevrons . When used with other keys they're normal shifts.</appendix>
-        <identifier>private.shifts_to_parens</identifier>
-        <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
-        <autogen>--KeyOverlaidModifier-- 
+        <item>
+            <name>Shifts L to Chevrons</name>
+            <appendix>Shift, when pressed alone, type Chevrons . When used with other keys they're normal shifts.</appendix>
+            <identifier>private.shifts_to_parens</identifier>
+            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+            <autogen>--KeyOverlaidModifier-- 
             KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::NONE, 
             KeyCode::SHIFT_L, KeyCode::BACKQUOTE</autogen>
-        <autogen>--KeyOverlaidModifier-- 
+            <autogen>--KeyOverlaidModifier-- 
             KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L, 
             KeyCode::SHIFT_L, KeyCode::BACKQUOTE, ModifierFlag::SHIFT_R</autogen>
-    </item>
-    <item>
+        </item>
+        <item>
             <name>Shift R short to froward delete</name>
             <identifier>shiftr_fdelete</identifier>
             <autogen>--KeyOverlaidModifier-- 
@@ -185,17 +206,13 @@
         KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
         KeyCode::SPACE</autogen>
         <!-- Alt R öffnet Alfred im Homefolder
-        <autogen>__KeyOverlaidModifier__
-        KeyCode::OPTION_R,
-        KeyCode::OPTION_R,
-        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
-        KeyCode::7, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
-        -->
+                <autogen>__KeyOverlaidModifier__
+                KeyCode::OPTION_R,
+                KeyCode::OPTION_R,
+                KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
+                KeyCode::7, ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R</autogen>
+                -->
     </item>
-    <appdef>
-        <appname>SAFARI</appname>
-        <equal>com.apple.Safari</equal>
-    </appdef>
     <item>
         <name>Safari Adress</name>
         <identifier>private.safari.adress</identifier>
@@ -270,9 +287,9 @@
         <autogen>__KeyOverlaidModifier__
       KeyCode::TAB,
             <!--
-                                                                                                              Use notsave.launcher_mode_v2 in order to be higher priority.
-                                                                                                              Use ModifierFlag::MY_LAUNCHER_MODE for __DropAllKeys__.
-                                                                                                          -->@begin
+                                                                                                                          Use notsave.launcher_mode_v2 in order to be higher priority.
+                                                                                                                          Use ModifierFlag::MY_LAUNCHER_MODE for __DropAllKeys__.
+                                                                                                                      -->@begin
       KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_private_launcher_mode, ModifierFlag::MY_LAUNCHER_MODE,
       @end
 
@@ -281,19 +298,17 @@
       @end
         </autogen>
     </item>
-<!-- Apps Folder definieren -->
+    <!-- Apps Folder definieren -->
     <vkopenurldef>
-    <name>KeyCode::VK_OPEN_URL_FILE_APPS</name>
-    <url type="file">/Applications</url>
-  </vkopenurldef>
-
+        <name>KeyCode::VK_OPEN_URL_FILE_APPS</name>
+        <url type="file">/Applications</url>
+    </vkopenurldef>
     <item hidden="true">
         <identifier vk_config="true">notsave.private_launcher_mode</identifier>
         <autogen>__BlockUntilKeyUp__ KeyCode::TAB,</autogen>
         <autogen>__KeyDownUpToKey__
       KeyCode::S,
       KeyCode::VK_OPEN_URL_APP_SAFARI,</autogen>
-        
         <autogen>__KeyToKey__
         KeyCode::D,
         KeyCode::VK_NONE,
@@ -407,38 +422,30 @@
         </item>
     </item>
     <item>
-  <name>Disable Sysdiagnose DOT Key</name>
-  <appendix>Disable Sysdiagnose DOT Key</appendix>
-  <identifier>private.disable_sysdiagnose_dot_key</identifier>
-  <autogen>
-    --KeyToKey--
+        <name>Disable Sysdiagnose DOT Key</name>
+        <appendix>Disable Sysdiagnose DOT Key</appendix>
+        <identifier>private.disable_sysdiagnose_dot_key</identifier>
+        <autogen>--KeyToKey--
     KeyCode::DOT,
     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
-    KeyCode::VK_NONE
-  </autogen>
-</item>
-
-<item>
-  <name>Disable Sysdiagnose COMMA Key</name>
-  <appendix>Disable Sysdiagnose COMMA Key</appendix>
-  <identifier>private.disable_sysdiagnose_comma_key</identifier>
-  <autogen>
-    --KeyToKey--
+    KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+        <name>Disable Sysdiagnose COMMA Key</name>
+        <appendix>Disable Sysdiagnose COMMA Key</appendix>
+        <identifier>private.disable_sysdiagnose_comma_key</identifier>
+        <autogen>--KeyToKey--
     KeyCode::COMMA,
     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
-    KeyCode::VK_NONE
-  </autogen>
-</item>
-
-<item>
-  <name>Disable Sysdiagnose Foward Slash Key</name>
-  <appendix>Disable Sysdiagnose FORWARD SLASH Key</appendix>
-  <identifier>private.disable_sysdiagnose_forward_slash</identifier>
-  <autogen>
-    --KeyToKey--
+    KeyCode::VK_NONE</autogen>
+    </item>
+    <item>
+        <name>Disable Sysdiagnose Foward Slash Key</name>
+        <appendix>Disable Sysdiagnose FORWARD SLASH Key</appendix>
+        <identifier>private.disable_sysdiagnose_forward_slash</identifier>
+        <autogen>--KeyToKey--
     KeyCode::SLASH,
     ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L | ModifierFlag::COMMAND_L,
-    KeyCode::VK_NONE
-  </autogen>
-</item>
+    KeyCode::VK_NONE</autogen>
+    </item>
 </root>
