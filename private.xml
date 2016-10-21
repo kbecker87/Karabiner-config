@@ -241,6 +241,10 @@
         <name>KeyCode::VK_OPEN_URL_APP_SAFARI</name>
         <url type="file">/Applications/Safari.app</url>
     </vkopenurldef>
+        <vkopenurldef>
+        <name>KeyCode::VK_OPEN_URL_APP_ITERM</name>
+        <url type="file">/Applications/iTerm.app</url>
+    </vkopenurldef>
     <vkopenurldef>
         <name>KeyCode::VK_OPEN_URL_APP_FINDER</name>
         <url type="file">/Applications/Path Finder.app</url>
@@ -342,6 +346,9 @@
         <autogen>__KeyDownUpToKey__
       KeyCode::U,
       KeyCode::VK_OPEN_URL_APP_ULYSSES,</autogen>
+      <autogen>__KeyDownUpToKey__
+      KeyCode::I,
+      KeyCode::VK_OPEN_URL_APP_ITERM,</autogen>  
         <autogen>__KeyDownUpToKey__
       KeyCode::A,
       KeyCode::VK_OPEN_URL_APP_ACTIVITY,</autogen>
