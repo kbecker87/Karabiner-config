@@ -39,6 +39,15 @@
             <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R,</autogen>
         </item>
         <item>
+            <name>Ajazz ALT R to CMD and fn</name>
+            <identifier>ajazz.fn</identifier>
+            <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
+            <autogen>__KeyOverlaidModifier__
+        KeyCode::CONTROL_L,
+        KeyCode::CONTROL_L,
+        KeyCode::FN</autogen>
+        </item>
+        <item>
             <name>Ajazz CTRL R to Safari Adress</name>
             <identifier>ajazz.safari.adress</identifier>
             <device_only>DeviceVendor::HOLDCHIP, DeviceProduct::Ajazz</device_only>
@@ -203,8 +212,7 @@
         <autogen>__KeyOverlaidModifier__
         KeyCode::COMMAND_R,
         KeyCode::COMMAND_R,
-        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L,
-        KeyCode::SPACE</autogen>
+        KeyCode::SLASH, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L</autogen>
         <!-- Alt R öffnet Alfred im Homefolder
                 <autogen>__KeyOverlaidModifier__
                 KeyCode::OPTION_R,
